@@ -25,7 +25,7 @@ pipeline {
             steps { 
                 script { 
 
-                    sh 'docker push  rehamgad1994/jenkins + $BUILD_NUMBER'
+                    sh 'docker push -t rehamgad1994/lab + $BUILD_NUMBER'
                     //docker.withRegistry( '', registryCredential ) { 
                         dockerImage.push() 
                     }
