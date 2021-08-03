@@ -16,7 +16,7 @@ pipeline {
                 script { 
 
                 sh 'docker login --username rehamgad1994  --password $password'
-                sh 'docker build -t  rehamgad1994/lab -f .'
+                sh 'docker build -t  rehamgad1994/lab . '
             
                 }
             } 
