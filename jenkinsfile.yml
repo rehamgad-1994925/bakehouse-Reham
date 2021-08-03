@@ -1,0 +1,17 @@
+pipeline{
+    
+        stage('docker build'){
+            steps{
+                sh "docker build . -t rehamgad1994/backhouse-Reham"
+            }
+        }
+        stage('dockerhub push'){
+            steps{
+                withCredentials([string(credentialsId: 'my_docker_hub_password', variable: 'DockerHubPwd')]) {
+                    sh "docker login -u rehamgad1994 -p ${DockerHubPwd}"
+                }
+                sh "docker push  rehagad1994backhouse-Reham"
+            }
+        }
+    }
+}
