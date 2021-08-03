@@ -4,9 +4,9 @@ pipeline {
         stage (deploy k8s) {
 
            steps{
-               
-               sh "kubectl apply -f my-deploy.yml  --kubeconfig=/home/reham.a.gad/.kube/config"
-               sh  "kubectl apply -f nodeport.yml  --kubeconfig=/home/reham.a.gad/.kube/config" 
+               sh' git fetch --all'
+               sh 'kubectl apply -f my-deploy.yml  --kubeconfig=/home/reham.a.gad/.kube/config'
+               sh  'kubectl apply -f nodeport.yml  --kubeconfig=/home/reham.a.gad/.kube/config'
 
 
            }
