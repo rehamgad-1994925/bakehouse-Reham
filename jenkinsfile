@@ -9,7 +9,7 @@ pipeline {
     stages { 
         stage('Cloning our Git') { 
             steps { 
-                git 'https://github.com/rehamgad-1994925/bakehouse-Reham' 
+                //git 'https://github.com/rehamgad-1994925/bakehouse-Reham' 
             }
         } 
         stage('Building our image') { 
