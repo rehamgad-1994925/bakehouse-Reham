@@ -1,4 +1,4 @@
-pipeline {
+pipeline { 
     environment { 
         registry = "rehamgad1994/lab" 
         registryCredential = 'dockerhub_id' 
@@ -26,7 +26,7 @@ pipeline {
             steps { 
                 script { 
 
-                    sh 'docker push  rehamgad1994/jenkins +$BUILD_NUMBER'
+                    sh 'docker push  rehamgad1994/jenkins + $BUILD_NUMBER'
                     //docker.withRegistry( '', registryCredential ) { 
                         dockerImage.push() 
                     }
