@@ -25,9 +25,9 @@ pipeline {
             steps { 
                 script { 
 
-                    sh 'docker push  rehamgad1994/lab:latest + $BUILD_NUMBER'
+                    sh 'docker image  push  rehamgad1994/lab:latest + $BUILD_NUMBER'
                     //docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
+                        //dockerImage.push() 
                     }
                 } 
             }
