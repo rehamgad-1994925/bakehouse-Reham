@@ -1,0 +1,37 @@
+pipeline {
+    environment { 
+3
+        registry = "rehamgad1994/lab" 
+4
+        registryCredential = 'dockerhub_id' 
+5
+        dockerImage = '' 
+    agent any 
+
+    stages { 
+        stage('Cloning our Git') { 
+            steps { 
+                git 'https://github.com/rehamgad-1994925/bakehouse-Reham.git' 
+            }
+        } 
+        stage('Building our image') { 
+            steps { 
+                script { 
+
+                sh 'docker login --username rehamgad1994  --password $password'
+                sh 'docker build -t rehamgad1994/lab'
+            
+                }
+            } 
+        }
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+
+                    sh 'docker push  rehamgad1994/jenkins +$BUILD_NUMBER'
+                    //docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
