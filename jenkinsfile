@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+        docker { image 'rehamgad1994/lab' }
+    }
+        stage (deploy k8s) {
+
+           steps{
+
+               sh "kubectl apply -f my-deploy.yml  --kubeconfig=/home/reham.a.gad/.kube/config"
+               sh  "kubectl apply -f nodeport.yml  --kubeconfig=/home/reham.a.gad/.kube/config" 
+
+
+           }
+
+        }
+
+
+    }
