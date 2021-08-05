@@ -1,12 +1,26 @@
 pipeline {
-    agent any
-        
+    agent any 
+    parameters {
+        choice(name:'BRANCH' ,choice:[release] )
+    }
+      stage('Building our image') { 
+            steps { 
+
+            checkout scm
+            
+                script { 
+                sh'git checkout ${params.BRANCH}'
+                sh 'docker login --username rehamgad1994  --password $password'
+                sh 'docker build -t rehamgad1994/lab  . '
+            
+                }
+            }   
         stage (deploy k8s) {
 
            steps{
-              
-               sh 'kubectl apply -f my-deploy.yml  --kubeconfig=/home/reham.a.gad/.kube/config'
-               sh  'kubectl apply -f nodeport.yml  --kubeconfig=/home/reham.a.gad/.kube/config'
+
+               sh "kubectl apply -f my-deploy.yml "
+               sh  "kubectl apply -f nodeport.yml " 
 
 
            }
@@ -15,3 +29,5 @@ pipeline {
 
 
     }
+}
+
