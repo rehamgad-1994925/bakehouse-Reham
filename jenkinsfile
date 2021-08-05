@@ -1,8 +1,5 @@
 pipeline {
     agent any 
-    parameters {
-        choice(name:'BRANCH' ,choice:[release] )
-    }
       stage('Building our image') { 
             steps { 
 
